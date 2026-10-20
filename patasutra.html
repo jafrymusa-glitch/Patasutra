@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f6f2">
+<title>পাতাসূত্র · PDF ও বাংলা OCR</title>
+<style>
+:root{--bg:#f7f6f2;--paper:#fff;--ink:#20231f;--muted:#73776f;--line:#e6e5df;--accent:#236b50;--soft:#e8f2ec;--danger:#a53d35;--navh:68px}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:system-ui,-apple-system,"Noto Sans Bengali","Hind Siliguri",sans-serif;background:var(--bg);color:var(--ink)}body{overflow:hidden}button,input,textarea{font:inherit}button{border:0;cursor:pointer;touch-action:manipulation}.app{height:100dvh;display:flex;flex-direction:column;max-width:900px;margin:auto;background:var(--bg)}header{height:58px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line);background:var(--paper)}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.5px}.brand-mark{width:32px;height:32px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:18px}.subbrand{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}.head-actions{display:flex;gap:7px}.icon-btn,.small-btn{background:#f1f1ec;border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--ink)}main{flex:1;min-height:0;display:flex;flex-direction:column}.preview-pane{height:44%;min-height:145px;max-height:65%;display:flex;flex-direction:column;border-bottom:1px solid var(--line);background:#eeede7}.pane-head{height:40px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:12px;color:var(--muted)}.page-meta{font-weight:700;color:var(--ink)}.preview-tools{display:flex;gap:5px}.preview-tools button{padding:5px 9px;border:1px solid #d8d8d0;background:#fff;border-radius:8px}.preview-scroll{flex:1;min-height:0;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:8px 12px 12px;overscroll-behavior:contain}.page-wrap{position:relative;display:flex;align-items:center;justify-content:center;min-width:100%;min-height:100%}#pdfCanvas{display:block;background:#fff;box-shadow:0 2px 12px #00000012;max-width:none;max-height:none}#emptyState{max-width:290px;text-align:center;align-self:center;margin:auto;color:var(--muted);padding:20px}#emptyState .big{font-size:42px;margin-bottom:8px}#emptyState strong{display:block;color:var(--ink);font-size:16px;margin-bottom:5px}.editor-pane{flex:1;min-height:0;display:flex;flex-direction:column;background:var(--paper)}.editor-head{height:43px;flex-shrink:0;padding:0 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.editor-head strong{font-size:14px}.editor-head span{font-size:11px;color:var(--muted)}#ocrText{width:100%;flex:1;min-height:70px;resize:none;border:0;outline:0;padding:14px 16px;background:var(--paper);color:#20231f;font-size:16px;line-height:1.85;direction:ltr;text-align:left;font-family:system-ui,"Noto Sans Bengali","Hind Siliguri",sans-serif}#ocrText:placeholder-shown{color:#a1a39c}.editor-foot{padding:4px 14px 8px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:8px}.bottom-nav{height:var(--navh);flex-shrink:0;padding:7px 10px max(7px,env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr 1.25fr 1fr;gap:7px;background:var(--paper);border-top:1px solid var(--line)}.nav-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:12px;background:#f4f4ef;color:#454940;font-size:11px;font-weight:650;min-width:0}.nav-btn .sym{font-size:18px;line-height:1.15}.nav-btn.primary{background:var(--accent);color:#fff}.nav-btn:disabled{opacity:.42;cursor:not-allowed}.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#2b9963;margin-right:4px}.welcome{padding:16px;overflow:auto}.upload-card{border:1.5px dashed #bfc8be;border-radius:18px;background:#fff;padding:22px 16px;text-align:center}.upload-card .upload-icon{font-size:34px}.upload-card h2{font-size:18px;margin:8px 0 4px}.upload-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 auto 15px;max-width:320px}.primary-btn{background:var(--accent);color:white;border-radius:12px;padding:11px 16px;font-weight:700}.secondary-btn{background:#f2f3ee;border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:10px 13px;font-weight:650}.hint{font-size:11px;color:var(--muted);line-height:1.6;margin:12px 2px}.progress-row{display:none;padding:7px 14px;background:#f8faf7;font-size:12px;color:var(--accent);border-bottom:1px solid var(--line)}.progress-row.show{display:block}.progress-track{height:3px;background:#dfe9e2;margin-top:6px;border-radius:4px;overflow:hidden}.progress-bar{height:100%;width:0;background:var(--accent);transition:width .2s}.toast{position:fixed;left:50%;bottom:calc(var(--navh) + 18px);transform:translate(-50%,12px);background:#242923;color:#fff;border-radius:12px;padding:10px 15px;font-size:13px;opacity:0;pointer-events:none;transition:.2s;z-index:10;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:#0007;z-index:20;display:none;align-items:flex-end;justify-content:center}.modal-backdrop.show{display:flex}.sheet{background:#fff;border-radius:20px 20px 0 0;width:min(100%,560px);padding:18px 18px max(20px,env(safe-area-inset-bottom));box-shadow:0 -8px 35px #0002}.sheet h3{margin:0 0 12px}.sheet p{font-size:13px;color:var(--muted);line-height:1.65}.sheet-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.sheet-actions button{padding:13px 8px;border-radius:12px;background:#f3f4ef;font-weight:700}.sheet-actions button:first-child{background:var(--accent);color:white}.hidden{display:none!important}.file-input{display:none}
+@media(min-width:700px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line)}.preview-pane{height:48%}.bottom-nav{padding-left:18px;padding-right:18px}.nav-btn{flex-direction:row;gap:7px;font-size:13px}.nav-btn .sym{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand"><div class="brand-mark">প</div><div>পাতাসূত্র<div class="subbrand">PDF · বাংলা OCR স্টুডিও</div></div></div>
+  <div class="head-actions">
+    <button class="icon-btn" id="openExport" title="Export">⇩ <span style="font-size:12px">Export</span></button>
+    <button class="icon-btn" id="newFile" title="নতুন PDF">＋</button>
+  </div>
+</header>
+<main>
+  <section class="preview-pane" id="previewPane">
+    <div class="pane-head"><span class="page-meta" id="pageMeta">PDF খুলুন</span><div class="preview-tools"><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomLabel">100%</button><button id="zoomIn" aria-label="Zoom in">＋</button></div></div>
+    <div class="preview-scroll" id="previewScroll">
+      <div id="emptyState"><div class="big">▤</div><strong>আপনার PDF এখানে দেখা যাবে</strong><span style="font-size:13px">একটি PDF নির্বাচন করুন, তারপর পৃষ্ঠা ধরে OCR করুন।</span></div>
+      <div class="page-wrap hidden" id="pageWrap"><canvas id="pdfCanvas"></canvas></div>
+    </div>
+  </section>
+  <div class="progress-row" id="progressRow"><span id="progressText">OCR প্রস্তুত হচ্ছে…</span><div class="progress-track"><div class="progress-bar" id="progressBar"></div></div></div>
+  <section class="editor-pane">
+    <div class="editor-head"><strong>বাংলা টেক্সট এডিটর</strong><span id="charCount">০ অক্ষর</span></div>
+    <textarea id="ocrText" spellcheck="false" placeholder="এই পৃষ্ঠার OCR লেখা এখানে আসবে। চাইলে সরাসরি লিখুন বা ভুল সংশোধন করুন…" aria-label="বাংলা OCR text"></textarea>
+    <div class="editor-foot"><span id="saveStatus"><span class="status-dot"></span>সংরক্ষিত</span><span id="ocrStatus">OCR এখনো চালানো হয়নি</span></div>
+  </section>
+</main>
+<nav class="bottom-nav" aria-label="প্রধান কাজ">
+  <button class="nav-btn" id="prevPage" disabled><span class="sym">‹</span><span>আগের পৃষ্ঠা</span></button>
+  <button class="nav-btn" id="runOcr" disabled><span class="sym">⌕</span><span>আবার OCR</span></button>
+  <button class="nav-btn primary" id="nextPage" disabled><span class="sym">›</span><span>পরের পৃষ্ঠা</span></button>
+  <button class="nav-btn" id="saveNow"><span class="sym">✓</span><span>সংরক্ষণ</span></button>
+</nav>
+</div>
+<input class="file-input" id="pdfInput" type="file" accept="application/pdf,.pdf">
+<div class="toast" id="toast"></div>
+<div class="modal-backdrop" id="exportModal">
+  <div class="sheet">
+    <h3>কাজ এক্সপোর্ট করুন</h3>
+    <p>সব পৃষ্ঠার লেখা TXT ফাইলে নিন, অথবা পৃষ্ঠা-ছবি ও OCR লেখা-সহ একটি HTML ফাইল তৈরি করুন। HTML-এ প্রতিটি পৃষ্ঠার ছবি এম্বেড করা হবে, তাই বড় PDF হলে ফাইলটি অনেক বড় হতে পারে।</p>
+    <div class="sheet-actions"><button id="exportTxt">↓ TXT ডাউনলোড</button><button id="exportHtml">▧ HTML + ছবি</button></div>
+    <button class="secondary-btn" id="closeExport" style="width:100%;margin-top:9px">বন্ধ করুন</button>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const DB_NAME='patasutra_db', DB_VERSION=1, PROJECT_KEY='active-project';
+let db, pdfDoc=null, pdfBytes=null, fileName='document.pdf', currentPage=1, pageCount=0, zoom=1, renderTask=null, renderToken=0;
+let pageTexts={}, ocrWorker=null, ocrBusy=false, saveTimer=null, lastSavedText='', objectUrl=null;
+const bn=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[+d]);
+function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2500)}
+function setSaveStatus(msg,ok=true){$('saveStatus').innerHTML=(ok?'<span class="status-dot"></span>':'')+msg}
+function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains('projects'))d.createObjectStore('projects',{keyPath:'id'});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+function dbPut(record){return new Promise((resolve,reject)=>{const tx=db.transaction('projects','readwrite');tx.objectStore('projects').put(record);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+function dbGet(id){return new Promise((resolve,reject)=>{const req=db.transaction('projects').objectStore('projects').get(id);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+function projectRecord(){return {id:PROJECT_KEY,fileName,pdf:pdfBytes?new Blob([pdfBytes],{type:'application/pdf'}):null,pageTexts,currentPage,pageCount,updatedAt:Date.now()}}
+async function persistProject(){if(!db)return;try{await dbPut(projectRecord());lastSavedText=$('ocrText').value;setSaveStatus('সংরক্ষিত');}catch(e){console.error(e);setSaveStatus('সংরক্ষণ ব্যর্থ',false);toast('সংরক্ষণ করা যায়নি—ফোনের স্টোরেজ পরীক্ষা করুন।')}}
+function scheduleSave(){setSaveStatus('সংরক্ষণ হচ্ছে…');clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{pageTexts[currentPage]=$('ocrText').value;updateCount();await persistProject()},450)}
+function updateCount(){$('charCount').textContent=bn([...($('ocrText').value||'')].length)+' অক্ষর'}
+function updateControls(){const loaded=!!pdfDoc;$('prevPage').disabled=!loaded||currentPage<=1;$('nextPage').disabled=!loaded||currentPage>=pageCount;$('runOcr').disabled=!loaded||ocrBusy;$('pageMeta').textContent=loaded?`পৃষ্ঠা ${bn(currentPage)} / ${bn(pageCount)}`:'PDF খুলুন';}
+function showPdfUI(){ $('emptyState').classList.add('hidden');$('pageWrap').classList.remove('hidden');$('previewPane').style.height='44%';updateControls()}
+function hidePdfUI(){ $('emptyState').classList.remove('hidden');$('pageWrap').classList.add('hidden');updateControls()}
+function clearCanvas(){const c=$('pdfCanvas');c.width=1;c.height=1;c.style.width='1px';c.style.height='1px'}
+async function renderPage(n){if(!pdfDoc||n<1||n>pageCount)return;currentPage=n;renderToken++;const token=renderToken;
+if(renderTask){try{renderTask.cancel()}catch(_){}renderTask=null}
+$('ocrText').value=pageTexts[n]||'';updateCount();$('ocrStatus').textContent=pageTexts[n]?'সম্পাদিত/সংরক্ষিত লেখা':'OCR এখনো চালানো হয়নি';updateControls();showPdfUI();$('zoomLabel').textContent=Math.round(zoom*100)+'%';
+try{const page=await pdfDoc.getPage(n);if(token!==renderToken)return;const box=$('previewScroll');const base=page.getViewport({scale:1});const fit=Math.max(.2,(box.clientWidth-24)/base.width);const scale=Math.min(2.2,fit*zoom);const vp=page.getViewport({scale});const canvas=$('pdfCanvas'),ctx=canvas.getContext('2d',{alpha:false});const dpr=Math.min(window.devicePixelRatio||1,1.5);canvas.width=Math.floor(vp.width*dpr);canvas.height=Math.floor(vp.height*dpr);canvas.style.width=Math.floor(vp.width)+'px';canvas.style.height=Math.floor(vp.height)+'px';ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);renderTask=page.render({canvasContext:ctx,viewport:vp,transform:dpr!==1?[dpr,0,0,dpr,0,0]:null});await renderTask.promise;if(token!==renderToken)return;renderTask=null;$('previewScroll').scrollTop=0;$('previewScroll').scrollLeft=0;
+}catch(e){if(e&&e.name!=='RenderingCancelledException'){console.error(e);toast('পৃষ্ঠা দেখানো যায়নি। আবার চেষ্টা করুন।')}}
+await persistProject();}
+async function loadPdf(file,restore=false){if(!file)return;if(file.type!=='application/pdf'&&!file.name.toLowerCase().endsWith('.pdf')){toast('শুধু PDF ফাইল নির্বাচন করুন।');return}
+if(file.size>120*1024*1024&&!confirm('ফাইলটি ১২০ MB-এর বেশি। মোবাইলে ধীর হতে পারে। চালিয়ে যাবেন?'))return;
+try{toast('PDF খোলা হচ্ছে…');const arr=new Uint8Array(await file.arrayBuffer());const task=pdfjsLib.getDocument({data:arr});pdfDoc=await task.promise;pdfBytes=arr;fileName=file.name||'document.pdf';pageCount=pdfDoc.numPages;currentPage=1;zoom=1;pageTexts={};if(restore){const old=await dbGet(PROJECT_KEY);if(old&&old.fileName===fileName&&old.pageTexts){pageTexts=old.pageTexts;currentPage=Math.min(old.currentPage||1,pageCount)}}await persistProject();await renderPage(currentPage);toast(`PDF খোলা হয়েছে · ${bn(pageCount)} পৃষ্ঠা`)}catch(e){console.error(e);pdfDoc=null;pdfBytes=null;hidePdfUI();toast('PDF খোলা যায়নি। ফাইলটি ঠিক আছে কি না দেখুন।')}}
+async function restoreProject(){try{const old=await dbGet(PROJECT_KEY);if(old&&old.pdf){fileName=old.fileName||'document.pdf';pageTexts=old.pageTexts||{};currentPage=old.currentPage||1;pageCount=old.pageCount||0;pdfBytes=new Uint8Array(await old.pdf.arrayBuffer());const task=pdfjsLib.getDocument({data:pdfBytes});pdfDoc=await task.promise;pageCount=pdfDoc.numPages;currentPage=Math.min(currentPage,pageCount);await renderPage(currentPage);toast('আগের কাজ ফিরিয়ে আনা হয়েছে।')}}catch(e){console.warn('Restore failed',e)}}
+async function ensureOCRWorker(){if(ocrWorker)return ocrWorker;if(!window.Tesseract)throw new Error('Tesseract.js লোড হয়নি—ইন্টারনেট সংযোগ পরীক্ষা করুন।');$('ocrStatus').textContent='বাংলা OCR ইঞ্জিন লোড হচ্ছে…';ocrWorker=await Tesseract.createWorker('ben',1,{langPath:'https://tessdata.projectnaptha.com/4.0.0',gzip:true,logger:m=>{if(m.status){$('progressRow').classList.add('show');$('progressText').textContent=m.status==='recognizing text'?'বাংলা লেখা শনাক্ত হচ্ছে…':m.status; if(typeof m.progress==='number')$('progressBar').style.width=Math.round(m.progress*100)+'%'}}});return ocrWorker}
+async function runOCR(){if(!pdfDoc||ocrBusy)return;ocrBusy=true;updateControls();$('progressRow').classList.add('show');$('progressBar').style.width='0%';$('progressText').textContent='পৃষ্ঠা প্রস্তুত হচ্ছে…';$('ocrStatus').textContent='OCR চলছে…';
+try{await renderPage(currentPage);const worker=await ensureOCRWorker();const result=await worker.recognize($('pdfCanvas'));pageTexts[currentPage]=(result.data.text||'').trim();$('ocrText').value=pageTexts[currentPage];updateCount();$('ocrStatus').textContent='OCR সম্পন্ন · লেখা যাচাই করুন';await persistProject();toast('এই পৃষ্ঠার OCR সম্পন্ন হয়েছে।')}
+catch(e){console.error(e);toast('OCR করা যায়নি: '+(e.message||'অজানা সমস্যা'));$('ocrStatus').textContent='OCR ব্যর্থ'}
+finally{ocrBusy=false;$('progressRow').classList.remove('show');$('progressBar').style.width='0%';updateControls()}}
+function downloadBlob(blob,name){const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+function safeName(name){return name.replace(/\.pdf$/i,'').replace(/[\\/:*?"<>|]/g,'_')||'patasutra'}
+function exportTxt(){if(!pdfDoc){toast('আগে একটি PDF খুলুন।');return}pageTexts[currentPage]=$('ocrText').value;const text=Array.from({length:pageCount},(_,i)=>`পৃষ্ঠা ${i+1}\n${pageTexts[i+1]||''}`).join('\n\n'+'─'.repeat(24)+'\n\n');downloadBlob(new Blob(['\ufeff'+text],{type:'text/plain;charset=utf-8'}),safeName(fileName)+'.txt');$('exportModal').classList.remove('show');persistProject();toast('TXT ডাউনলোড শুরু হয়েছে।')}
+async function exportHtml(){if(!pdfDoc||ocrBusy){toast('আগে PDF খুলুন এবং OCR চললে শেষ হতে দিন।');return}pageTexts[currentPage]=$('ocrText').value;persistProject();$('exportHtml').disabled=true;$('exportHtml').textContent='তৈরি হচ্ছে…';$('progressRow').classList.add('show');
+try{const pages=[];for(let i=1;i<=pageCount;i++){ $('progressText').textContent=`HTML তৈরি হচ্ছে: ${bn(i)} / ${bn(pageCount)}`;$('progressBar').style.width=Math.round(i/pageCount*100)+'%';const p=await pdfDoc.getPage(i);const base=p.getViewport({scale:1});const scale=Math.min(1.15,1000/base.width);const vp=p.getViewport({scale});const c=document.createElement('canvas');c.width=Math.round(vp.width);c.height=Math.round(vp.height);await p.render({canvasContext:c.getContext('2d',{alpha:false}),viewport:vp}).promise;const img=c.toDataURL('image/jpeg',.78);pages.push(`<section><h2>পৃষ্ঠা ${i}</h2><img src="${img}" alt="PDF page ${i}"><pre>${escapeHtml(pageTexts[i]||'')}</pre></section>`);c.width=1;c.height=1}
+const out='<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escapeHtml(fileName)+' · পাতাসূত্র</title><style>body{font-family:system-ui,"Noto Sans Bengali",sans-serif;max-width:850px;margin:24px auto;padding:0 14px;color:#222}section{border-bottom:1px solid #ddd;padding:20px 0;break-inside:avoid}img{display:block;max-width:100%;height:auto;margin:10px auto;border:1px solid #ddd}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:16px/1.8 system-ui,"Noto Sans Bengali",sans-serif;background:#fafaf7;padding:14px;border-radius:8px}h1{font-size:24px}</style></head><body><h1>পাতাসূত্র · ${escapeHtml(fileName)}</h1>${pages.join('')}</body></html>';
+downloadBlob(new Blob(['\ufeff',out],{type:'text/html;charset=utf-8'}),safeName(fileName)+'.html');$('exportModal').classList.remove('show');toast('HTML ফাইল তৈরি হয়েছে।')
+}catch(e){console.error(e);toast('HTML তৈরি হয়নি: '+(e.message||'স্টোরেজ/মেমরি পরীক্ষা করুন।'))}
+finally{$('exportHtml').disabled=false;$('exportHtml').textContent='▧ HTML + ছবি';$('progressRow').classList.remove('show')}}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('pdfInput').addEventListener('change',e=>{const f=e.target.files[0];if(f)loadPdf(f);e.target.value=''});
+$('newFile').onclick=()=>{if(pdfDoc&&!confirm('নতুন PDF খুললে বর্তমান PDF বদলে যাবে। বর্তমান কাজ আগে স্বয়ংক্রিয়ভাবে সংরক্ষিত হয়েছে। চালিয়ে যাবেন?'))return;$('pdfInput').click()};
+$('prevPage').onclick=()=>renderPage(currentPage-1);$('nextPage').onclick=()=>renderPage(currentPage+1);$('runOcr').onclick=runOCR;
+$('ocrText').addEventListener('input',()=>{pageTexts[currentPage]=$('ocrText').value;updateCount();scheduleSave()});
+$('saveNow').onclick=async()=>{clearTimeout(saveTimer);if(pdfDoc)pageTexts[currentPage]=$('ocrText').value;await persistProject();toast('কাজ সংরক্ষণ করা হয়েছে।')};
+$('zoomIn').onclick=()=>{if(!pdfDoc)return;zoom=Math.min(2.5,zoom+.15);renderPage(currentPage)};$('zoomOut').onclick=()=>{if(!pdfDoc)return;zoom=Math.max(.55,zoom-.15);renderPage(currentPage)};$('zoomLabel').onclick=()=>{zoom=1;renderPage(currentPage)};
+$('openExport').onclick=()=>{if(!pdfDoc){toast('আগে একটি PDF খুলুন।');return}$('exportModal').classList.add('show')};$('closeExport').onclick=()=>$('exportModal').classList.remove('show');$('exportModal').addEventListener('click',e=>{if(e.target===$('exportModal'))$('exportModal').classList.remove('show')});$('exportTxt').onclick=exportTxt;$('exportHtml').onclick=exportHtml;
+document.addEventListener('visibilitychange',()=>{if(document.hidden){clearTimeout(saveTimer);if(pdfDoc)pageTexts[currentPage]=$('ocrText').value;persistProject()}});
+window.addEventListener('beforeunload',()=>{if(pdfDoc){pageTexts[currentPage]=$('ocrText').value;persistProject()}});
+window.addEventListener('resize',()=>{if(pdfDoc){clearTimeout(window._resizeTimer);window._resizeTimer=setTimeout(()=>renderPage(currentPage),180)}});
+(async()=>{try{if(!window.pdfjsLib)throw new Error('PDF.js CDN unavailable');pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';db=await openDB();await restoreProject()}catch(e){console.error(e);toast('প্রস্তুত হতে সমস্যা হয়েছে। ইন্টারনেট সংযোগ ও ব্রাউজার পরীক্ষা করুন।')}})();
+})();
+</script>
+</body>
+</html>
